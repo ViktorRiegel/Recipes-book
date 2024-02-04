@@ -1,0 +1,71 @@
+﻿@page
+@model RecipesBook.Pages.Recipies.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+<link rel="stylesheet" href="~/css/create.css" type="text/css" />
+
+<div>
+    <a style="position: absolute; margin-top: 10px" asp-page="Index"><img src="~/assets/arrowWhite24.png"></a>
+    <h1>Create Recipe</h1> 
+</div>
+<div class="row">
+    <div class="col-md-4" style="background-color: rgb(226 232 240); padding: 20px; border: solid 1px rgb(203 213 225); border-radius: 10px;  color: black;">
+       <form id="Form1" method="post" runat="server" EncType="multipart/form-data" action="">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+              <div class="form-group">
+                <label asp-for="RecipeBook.Images" class="control-label"></label>
+                <input asp-for="RecipeBook.Images"  class="form-control" >
+                @* <span asp-validation-for="RecipeBook.Images" class="text-danger"></span>
+                 id="oFile" type="file" runat="server" NAME="oFile"*@
+            </div> 
+            <div class="form-group">
+                <label asp-for="RecipeBook.Title" class="control-label"></label>
+                <input asp-for="RecipeBook.Title" class="form-control" />
+                <span asp-validation-for="RecipeBook.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RecipeBook.Category" class="control-label"></label>
+                <input asp-for="RecipeBook.Category" class="form-control" />
+                <span asp-validation-for="RecipeBook.Category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RecipeBook.CreatedDate" class="control-label"></label>
+                <input asp-for="RecipeBook.CreatedDate" class="form-control" />
+                <span asp-validation-for="RecipeBook.CreatedDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RecipeBook.Complexity" class="control-label"></label>
+                <input asp-for="RecipeBook.Complexity" class="form-control" />
+                <span asp-validation-for="RecipeBook.Complexity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RecipeBook.PreparationTime" class="control-label"></label>
+                <input asp-for="RecipeBook.PreparationTime" class="form-control" />
+                <span asp-validation-for="RecipeBook.PreparationTime" class="text-danger"></span>
+            </div>
+              <div class="form-group">
+                <label asp-for="RecipeBook.Ingredients" class="control-label"></label>
+                <input asp-for="RecipeBook.Ingredients" class="form-control" />
+                <span asp-validation-for="RecipeBook.Ingredients" class="text-danger"></span>
+            </div>
+              <div class="form-group">
+                <label asp-for="RecipeBook.Steps" class="control-label"></label>
+                <input asp-for="RecipeBook.Steps" class="form-control" />
+                <span asp-validation-for="RecipeBook.Steps" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <input id="btnUpload" runat="server" type="submit" value="Create" />
+            </div>
+        </form>
+    </div>
+    
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

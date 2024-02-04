@@ -1,0 +1,38 @@
+﻿@page
+@model RecipesBook.Pages.Recipies.IndexModel
+
+@{
+    ViewData["Title"] = "Home page";
+}
+<link rel="stylesheet" href="~/css/StylesMain.css" type="text/css" />
+
+<div class="text-center">
+    <h1 class="display-4"
+
+       <p style="font-size:80px;co"> Flavorsome Delights:
+        <br /> The Ultimate Recipe Book App </p>
+    </h1> 
+</div>
+
+<div style="margin-top: 100px;" class="row">
+
+
+    @foreach (var item in Model.RecipeBook)
+    {
+        <div class="col-3">
+            <div class="card">
+                <div class="card-image">
+                    <img src=@Html.DisplayFor(modelItem => item.Images) class="card-img-top details-image" alt="Recipe Image"  style="width:300px; height:225px;">
+                </div>
+                <div class="card-text">
+
+                    <h2 class="card-title">@Html.DisplayFor(modelItem => item.Title)</h2>
+
+                    <p class="card-body"><a href="/Recipies/Details?id=@item.Id" class="btn btn-secondary btn-lg"> Details</a></p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+

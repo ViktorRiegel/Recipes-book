@@ -1,0 +1,94 @@
+﻿@page
+@model RecipesBook.Pages.Recipies.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div style="color: black;" class="container">
+    <h1 style="color: white;" class="text-center">@Model.RecipeBook.Title</h1>
+
+    <div class="card details-card">
+        <div class="card-body">
+            <img src=@Model.RecipeBook.Images class="card-img-top details-image" alt="Recipe Image" width="100" height="auto">
+            <hr />
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <dl>
+                        <dt>Category:</dt>
+                        <dd>@Html.DisplayFor(model => model.RecipeBook.Category)</dd>
+                    </dl>
+                    <dl>
+                        <dt>Created Date:</dt>
+                        <dd>@Html.DisplayFor(model => model.RecipeBook.CreatedDate)</dd>
+                    </dl>
+                    <dl>
+                        <dt>Complexity:</dt>
+                        <dd>@Html.DisplayFor(model => model.RecipeBook.Complexity)</dd>
+                    </dl>
+                </div>
+                <div class="col-sm-6">
+                    <dl>
+                        <dt>Preparation Time:</dt>
+                        <dd>
+                            <img src="~/assets/timer24.png" />
+                            @Html.DisplayFor(model => model.RecipeBook.PreparationTime) Min
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>Ingredients:</dt>
+                        <dd>
+                            @if (Model.RecipeBook.Ingredients != null)
+                            {
+                                foreach (var ingredient in Model.RecipeBook.Ingredients)
+                                {
+                                    <p>@ingredient</p>
+                                }
+                            }
+                            else
+                            {
+                                <p>No ingredients available.</p>
+                            }
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>Steps:</dt>
+                        <dd>
+                            @if (Model.RecipeBook.Steps != null)
+                            {
+                                foreach (var step in Model.RecipeBook.Steps)
+                                {
+                                    <p>@step</p>
+                                }
+                            }
+                            else
+                            {
+                                <p>No steps available.</p>
+                            }
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <a asp-page="./Index" class="btn btn-secondary btn-flip rounded-btn" data-front="Go Back to List" data-back="Back to List"></a>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="~/css/recipes-details.css" />
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.5.0/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.dropdown-toggle').dropdown();
+        });
+    </script>
+}

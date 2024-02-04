@@ -1,0 +1,145 @@
+/* #head {
+  border: solid 1px black;
+} */
+
+.styled-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  width: 100%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.styled-table thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+  padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+  color: black;
+}
+.styled-table tbody tr:nth-of-type(odd) {
+  background-color: rgba(230, 211, 221, 0.25);
+}
+
+#blackClock,
+#whiteClock {
+  display: none;
+}
+
+.styled-table tbody tr:nth-of-type(even) #blackClock {
+  display: inline;
+}
+.styled-table tbody tr:nth-of-type(odd) #whiteClock {
+  display: inline;
+}
+
+#deleteBlack,
+#deleteWhite {
+  display: none;
+}
+
+.styled-table tbody tr:nth-of-type(even) #deleteBlack {
+  display: inline;
+}
+
+.styled-table tbody tr:nth-of-type(odd) #deleteWhite {
+  display: inline;
+}
+
+.styled-table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+
+.styled-table tbody tr.active-row {
+  font-weight: bold;
+  color: #009879;
+}
+
+#button-addon2 {
+  background-color: #f3f3f3;
+}
+
+@keyframes buttonAnimation {
+    0% {
+        opacity: 0;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+body {
+    font-family: sans-serif;
+    background-color: #81d4fa;
+    font-weight: bold;
+}
+
+.text-box {
+    margin-left: 44vw;
+    margin-top: 42vh;
+}
+
+.btn {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+    display: inline-block;
+    border-radius: 100px;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.styled-table tbody tr:nth-of-type(even) .btn {
+    background-color: #009879;
+    color: white
+}
+
+.styled-table tbody tr:nth-of-type(odd) .btn {
+    background-color: white;
+    color:black
+}
+
+
+
+.btn::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.4s;
+}
+
+.btn-white::after {
+    background-color: #fff;
+}
+
+.btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+.btn-animated {
+    animation: buttonAnimation 1s ease-out;
+    animation-fill-mode: both; 
+}

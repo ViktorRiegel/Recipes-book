@@ -1,0 +1,27 @@
+#btnUpload {
+  width: 100%;
+  background-color: rgb(203 213 225);
+  border: solid 1px rgb(128, 137, 147);
+  border-radius: 10px;
+  height: 40px;
+}
+#btnUpload:hover {
+  background-color: rgb(148, 152, 156);
+}
+.form-group {
+  padding: 2px;
+}
+.form-control:focus {
+  outline: none;
+  border-radius: 10px;
+}
+h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

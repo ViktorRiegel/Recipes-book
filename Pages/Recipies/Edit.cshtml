@@ -1,0 +1,84 @@
+﻿@page
+@model RecipesBook.Pages.Recipies.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<head>
+    <link rel="stylesheet" href="~/css/card.css" type="text/css" />
+</head>
+<a style="position:absolute; margin-top:8px" asp-page="Index"><img src="~/assets/arrowWhite24.png"></a>
+<div style="text-align:center">
+    <h1>Edit</h1>
+</div>
+<hr />
+<div id="card" class="card">
+    <img src=@Model.RecipeBook.Images class="card-img-top" alt="..."> 
+    <form method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="RecipeBook.Id" />
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <div class="form-group">
+                    <label asp-for="RecipeBook.Images" class="control-label"></label>
+                    <input asp-for="RecipeBook.Images" class="form-control" />
+                    <span asp-validation-for="RecipeBook.Images" class="text-danger"></span>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="form-group">
+                    <label asp-for="RecipeBook.Title" class="control-label"></label>
+                    <input asp-for="RecipeBook.Title" class="form-control" />
+                    <span asp-validation-for="RecipeBook.Title" class="text-danger"></span>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="form-group">
+                    <label asp-for="RecipeBook.Category" class="control-label"></label>
+                    <input asp-for="RecipeBook.Category" class="form-control" />
+                    <span asp-validation-for="RecipeBook.Category" class="text-danger"></span>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="form-group">
+                    <label asp-for="RecipeBook.CreatedDate" class="control-label"></label>
+                    <input asp-for="RecipeBook.CreatedDate" class="form-control" />
+                    <span asp-validation-for="RecipeBook.CreatedDate" class="text-danger"></span>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="form-group">
+                    <label asp-for="RecipeBook.Complexity" class="control-label"></label>
+                    <input asp-for="RecipeBook.Complexity" class="form-control" />
+                    <span asp-validation-for="RecipeBook.Complexity" class="text-danger"></span>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="form-group">
+                    <label asp-for="RecipeBook.PreparationTime" class="control-label"></label>
+                    <input asp-for="RecipeBook.PreparationTime" class="form-control" />
+                    <span asp-validation-for="RecipeBook.PreparationTime" class="text-danger"></span>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="form-group">
+                    <label asp-for="RecipeBook.Ingredients" class="control-label"></label>
+                    <input asp-for="RecipeBook.Ingredients" class="form-control" rows="3"></input>
+                    <span asp-validation-for="RecipeBook.Ingredients" class="text-danger"></span>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="form-group">
+                    <label asp-for="RecipeBook.Steps" class="control-label"></label>
+                    <input asp-for="RecipeBook.Steps" class="form-control" rows="5"></input>
+                    <span asp-validation-for="RecipeBook.Steps" class="text-danger"></span>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn" style="width:100%; background-color: rgb(203 213 225);" />
+                </div>
+            </li>
+        </ul>
+    </form>
+</div>

@@ -1,0 +1,115 @@
+﻿@page
+@model RecipesBook.Pages.Recipies.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/listRecipe.css" type="text/css" />
+</head>
+
+<h1>Recipes List</h1>
+
+<form>
+    <div class="input-group w-25 mb-3">
+        <input type="text" class="form-control" placeholder="Search for title" aria-label="Recipient's username" aria-describedby="button-addon2" asp-for="SearchString" style="width:25px">
+        <button class="btn btn-outline-secondary" type="submit" id="button-addon2" value="Filter">Search</button>
+    </div>
+</form>
+
+<table class="styled-table">
+    <thead id="head">
+        <tr>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.TitleSort" asp-route-searchString="@Model.SearchString" class="sortLink" style="color: white; text-decoration: none;">
+                    @Html.DisplayNameFor(model => model.RecipeBook[0].Title)
+                </a>
+                <img src="~/assets/expand_less.png" width="@(Model.TitleSort=="titleDesc"?18:0)" />
+                <img src="~/assets/expand_more.png" width="@(Model.TitleSort==""?18:0)" />
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.CategorySort" asp-route-searchString="@Model.SearchString" class="sortLink" style="color: white; text-decoration: none;">
+                    @Html.DisplayNameFor(model => model.RecipeBook[0].Category)
+                    <img src="~/assets/expand_less.png" width="@(Model.CategorySort=="categoryDesc"?18:0)" />
+                    <img src="~/assets/expand_more.png" width="@(Model.CategorySort==""?18:0)" />
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort" asp-route-searchString="@Model.SearchString" class="sortLink" style="color: white; text-decoration: none;">
+                    @Html.DisplayNameFor(model => model.RecipeBook[0].CreatedDate)
+                    <img src="~/assets/expand_less.png" width="@(Model.DateSort=="dateDesc"?18:0)" />
+                    <img src="~/assets/expand_more.png" width="@(Model.DateSort==""?18:0)" />
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.ComplexitySort" asp-route-searchString="@Model.SearchString" class="sortLink" style="color: white; text-decoration: none;">
+                    @Html.DisplayNameFor(model => model.RecipeBook[0].Complexity)
+                    <img src="~/assets/expand_less.png" width="@(Model.ComplexitySort=="complexityDesc"?18:0)" />
+                    <img src="~/assets/expand_more.png" width="@(Model.ComplexitySort==""?18:0)" />
+                </a>
+            </th>
+            
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.PrepTimeSort" asp-route-searchString="@Model.SearchString" class="sortLink" style="color: white; text-decoration: none;">
+                    @Html.DisplayNameFor(model => model.RecipeBook[0].PreparationTime)
+                    <img src="~/assets/expand_less.png" width="@(Model.PrepTimeSort=="prepDesc"?18:0)" />
+                    <img src="~/assets/expand_more.png" width="@(Model.PrepTimeSort==""?18:0)" />
+                </a>
+            </th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.RecipeBook)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Complexity)
+                </td>
+                
+                <td>
+                    @Html.DisplayFor(modelItem => item.PreparationTime) Min
+                    <img id="blackClock" src="~/assets/timer24.png" />
+                    <img id="whiteClock" src="~/assets/timerWhite.png" />
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id" class="btn btn-animated">Edit</a>
+                </td>
+                <td>
+                    <a asp-page="./Details" asp-route-id="@item.Id" class="btn btn-animated">Detail</a>
+                </td>
+                <td>
+                    <a asp-page="./Delete" asp-route-id="@item.Id">
+                        <img id="deleteBlack" src="~/assets/delete.png" />
+                        <img id="deleteWhite" src="~/assets/deleteWhite.png" />
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@{
+    var prevDisabled = !Model.RecipeBook.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.RecipeBook.HasNextPage ? "disabled" : "";
+}
+
+<a asp-page="./Index" asp-route-sortOrder="@Model.CurrentSort" asp-route-pageIndex="@(Model.RecipeBook.PageIndex - 1)" asp-route-searchString="@Model.SearchString" class="btn btn-primary @prevDisabled">
+    Previous
+</a>
+
+<a asp-page="./Index" asp-route-sortOrder="@Model.CurrentSort" asp-route-pageIndex="@(Model.RecipeBook.PageIndex + 1)" asp-route-searchString="@Model.SearchString" class="btn btn-primary @nextDisabled">
+    Next
+</a>
